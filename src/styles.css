@@ -136,25 +136,6 @@ nav { display: flex; flex-direction: column; gap: 2px; }
   display: block;
 }
 
-.sidebar-footer {
-  margin-top: auto;
-  padding: 0 4px;
-}
-.sidebar-status {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: #bbb;
-}
-.sidebar-status-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  flex-shrink: 0;
-}
-.sidebar-version { font-size: 10px; color: #ccc; margin-top: 3px; }
-
 /* ── Main ── */
 .main {
   flex: 1;

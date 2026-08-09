@@ -53,13 +53,6 @@
             设置
           </button>
         </nav>
-        <div class="sidebar-footer">
-          <div class="sidebar-status">
-            <div class="sidebar-status-dot"></div>
-            <span id="conn-status">连接正常</span>
-          </div>
-          <div class="sidebar-version" id="sidebar-version">v0.1.0</div>
-        </div>
       </aside>
 
       <!-- Main -->
@@ -263,13 +256,16 @@
 
           <div class="form-row">
             <label>官网链接</label>
-            <input class="c-input" type="text" id="f-website" placeholder="https://example.com（可选）" autocomplete="off" />
+            <input class="c-input" type="text" id="f-website" placeholder="https://example.com（可选）" maxlength="2048" autocomplete="off" />
           </div>
 
           <div class="form-row">
-            <label>API Key</label>
+            <div class="form-row-head">
+              <label>API Key</label>
+              <button type="button" class="text-link" id="btn-get-packy-key" hidden>获取 Key</button>
+            </div>
             <div class="c-input-wrap">
-              <input class="c-input" type="password" id="f-key" placeholder="必填：粘贴你的 API Key" autocomplete="new-password" />
+              <input class="c-input" type="password" id="f-key" placeholder="必填：粘贴你的 API Key" maxlength="8192" autocomplete="new-password" />
               <button type="button" class="c-input-affix" id="toggle-key" tabindex="-1">显示</button>
             </div>
             <div class="field-hint" id="key-field-tip">第三方供应商必须填写 API Key 才能添加</div>
@@ -280,7 +276,7 @@
               <label>请求地址</label>
               <button type="button" class="text-link" id="btn-full-url-hint" tabindex="-1">完整 URL</button>
             </div>
-            <input class="c-input" type="text" id="f-url" placeholder="https://your-api-endpoint.com" autocomplete="off" />
+            <input class="c-input" type="text" id="f-url" placeholder="https://your-api-endpoint.com" maxlength="2048" autocomplete="off" />
             <div class="tip-banner tip-warn">
               <span class="tip-icon">💡</span>
               <span>填写兼容 API 的服务端点地址，不要以斜杠结尾</span>
@@ -289,7 +285,7 @@
 
           <div class="form-row">
             <label>默认模型</label>
-            <input class="c-input" type="text" id="f-model" placeholder="例如：claude-sonnet-4-6" autocomplete="off" />
+            <input class="c-input" type="text" id="f-model" placeholder="例如：claude-sonnet-4-6" maxlength="256" autocomplete="off" />
           </div>
 
           <!-- 更多设置（默认折叠）：模型映射等。官方不显示。 -->
@@ -318,9 +314,9 @@
               </div>
               <div class="model-map-row" data-role="sonnet">
                 <span class="model-map-role">Sonnet</span>
-                <input class="c-input map-display" type="text" placeholder="例如 DeepSeek V4 Pro" autocomplete="off" />
+                <input class="c-input map-display" type="text" placeholder="例如 DeepSeek V4 Pro" maxlength="256" autocomplete="off" />
                 <div class="map-model-combo">
-                  <input class="c-input map-model" type="text" placeholder="实际模型 ID" autocomplete="off" />
+                  <input class="c-input map-model" type="text" placeholder="实际模型 ID" maxlength="256" autocomplete="off" />
                   <div class="map-pick">
                     <button type="button" class="map-pick-trigger" title="从已获取列表选择" aria-label="选择模型" aria-haspopup="listbox" aria-expanded="false">
                       <span class="map-pick-label">选择</span>
@@ -332,9 +328,9 @@
               </div>
               <div class="model-map-row" data-role="opus">
                 <span class="model-map-role">Opus</span>
-                <input class="c-input map-display" type="text" placeholder="例如 DeepSeek V4 Pro" autocomplete="off" />
+                <input class="c-input map-display" type="text" placeholder="例如 DeepSeek V4 Pro" maxlength="256" autocomplete="off" />
                 <div class="map-model-combo">
-                  <input class="c-input map-model" type="text" placeholder="实际模型 ID" autocomplete="off" />
+                  <input class="c-input map-model" type="text" placeholder="实际模型 ID" maxlength="256" autocomplete="off" />
                   <div class="map-pick">
                     <button type="button" class="map-pick-trigger" title="从已获取列表选择" aria-label="选择模型" aria-haspopup="listbox" aria-expanded="false">
                       <span class="map-pick-label">选择</span>
@@ -346,9 +342,9 @@
               </div>
               <div class="model-map-row" data-role="fable">
                 <span class="model-map-role">Fable</span>
-                <input class="c-input map-display" type="text" placeholder="例如 DeepSeek V4 Pro" autocomplete="off" />
+                <input class="c-input map-display" type="text" placeholder="例如 DeepSeek V4 Pro" maxlength="256" autocomplete="off" />
                 <div class="map-model-combo">
-                  <input class="c-input map-model" type="text" placeholder="实际模型 ID" autocomplete="off" />
+                  <input class="c-input map-model" type="text" placeholder="实际模型 ID" maxlength="256" autocomplete="off" />
                   <div class="map-pick">
                     <button type="button" class="map-pick-trigger" title="从已获取列表选择" aria-label="选择模型" aria-haspopup="listbox" aria-expanded="false">
                       <span class="map-pick-label">选择</span>
@@ -360,9 +356,9 @@
               </div>
               <div class="model-map-row" data-role="haiku">
                 <span class="model-map-role">Haiku</span>
-                <input class="c-input map-display" type="text" placeholder="例如 DeepSeek V4 Pro" autocomplete="off" />
+                <input class="c-input map-display" type="text" placeholder="例如 DeepSeek V4 Pro" maxlength="256" autocomplete="off" />
                 <div class="map-model-combo">
-                  <input class="c-input map-model" type="text" placeholder="实际模型 ID" autocomplete="off" />
+                  <input class="c-input map-model" type="text" placeholder="实际模型 ID" maxlength="256" autocomplete="off" />
                   <div class="map-pick">
                     <button type="button" class="map-pick-trigger" title="从已获取列表选择" aria-label="选择模型" aria-haspopup="listbox" aria-expanded="false">
                       <span class="map-pick-label">选择</span>
@@ -376,7 +372,7 @@
                 <span class="model-map-role">Subagent</span>
                 <input class="c-input map-display" type="text" value="不显示在 /model 菜单" disabled />
                 <div class="map-model-combo">
-                  <input class="c-input map-model" type="text" placeholder="实际模型 ID（可选）" autocomplete="off" />
+                  <input class="c-input map-model" type="text" placeholder="实际模型 ID（可选）" maxlength="256" autocomplete="off" />
                   <div class="map-pick">
                     <button type="button" class="map-pick-trigger" title="从已获取列表选择" aria-label="选择模型" aria-haspopup="listbox" aria-expanded="false">
                       <span class="map-pick-label">选择</span>
@@ -388,9 +384,9 @@
               </div>
               <div class="model-map-row" data-role="fallback">
                 <span class="model-map-role">默认兜底</span>
-                <input class="c-input map-display" type="text" placeholder="可选" autocomplete="off" />
+                <input class="c-input map-display" type="text" placeholder="可选" maxlength="256" autocomplete="off" />
                 <div class="map-model-combo">
-                  <input class="c-input map-model" type="text" placeholder="兜底模型 ID" autocomplete="off" />
+                  <input class="c-input map-model" type="text" placeholder="兜底模型 ID" maxlength="256" autocomplete="off" />
                   <div class="map-pick">
                     <button type="button" class="map-pick-trigger" title="从已获取列表选择" aria-label="选择模型" aria-haspopup="listbox" aria-expanded="false">
                       <span class="map-pick-label">选择</span>

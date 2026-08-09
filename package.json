@@ -10,6 +10,10 @@
     "core:encrypt": "node scripts/core-crypto.mjs encrypt",
     "core:decrypt": "node scripts/core-crypto.mjs decrypt",
     "core:verify": "node scripts/core-crypto.mjs verify",
+    "catalog:key": "node scripts/provider-catalog-sign.mjs init",
+    "catalog:sign": "node scripts/provider-catalog-sign.mjs sign",
+    "release-catalog:key": "node scripts/release-catalog-sign.mjs init",
+    "release-catalog:sign": "node scripts/release-catalog-sign.mjs sign",
     "tauri": "tauri",
     "tauri:dev": "tauri dev",
     "tauri:build": "tauri build"
