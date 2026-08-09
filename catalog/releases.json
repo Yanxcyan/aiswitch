@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "issued_at": "2026-08-09T00:00:00Z",
+  "expires_at": "2026-09-08T00:00:00Z",
+  "channel": "stable",
+  "releases": [
+    {
+      "version": "26.803.5235.0",
+      "channel": "stable",
+      "architecture": "x64",
+      "file_name": "ChatGPT-x64.msix",
+      "download_url": "https://download.yanxsir.cn/ChatGPT-x64.msix",
+      "size_bytes": 699660443,
+      "sha256": "f28ad0e94b75e3273c1e8ab87fdef15a2395fb9126260e8b623ce73dad348558",
+      "published_at": "2026-08-08T00:00:00Z",
+      "notes": "Windows x64 ChatGPT Desktop (OpenAI.Codex)",
+      "mirrors": [
+        {
+          "id": "low",
+          "label": "快速",
+          "download_url": "https://download.yanxsir.cn/ChatGPT-x64.msix",
+          "priority": 0
+        },
+        {
+          "id": "high",
+          "label": "高速",
+          "download_url": "https://tencentcos.yanxsir.cn/ChatGPT-x64.msix",
+          "priority": 1
+        }
+      ]
+    }
+  ]
+}

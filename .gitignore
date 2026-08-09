@@ -53,6 +53,7 @@ Thumbs.db
 *.deb
 *.rpm
 *.sig
+!catalog/*.sig
 
 # Internal reports and independently published release catalogs
 /AUDIT_REPORT.md
@@ -61,3 +62,4 @@ Thumbs.db
 # Local tooling
 .pnpm-store/
 .cargo-cache/
+.provider-catalog/
