@@ -21,17 +21,27 @@ https://github.com/Yanxcyan/aiswitch/releases
 - `src-tauri/tauri.conf.json` → `"version": "0.1.1"`
 - `src-tauri/Cargo.toml` → `version = "0.1.1"`
 
-### 2. 提交并打 tag
+### 2. 加密并校验核心源码
+
+```powershell
+pnpm.cmd core:encrypt
+pnpm.cmd core:verify
+```
+
+仓库只上传 `src/app.js.enc` 和 `src-tauri/src/*.rs.enc`。明文核心源码只保留在本地，并已由 `.gitignore` 排除。
+
+### 3. 只提交已确认的文件并打 tag
 
 ```bash
-git add -A
+# 先用 git status 检查范围，再用 git add -- <已确认路径>
+# 禁止使用 git add -A、git add . 或 git add --all
 git commit -m "release: v0.1.1"
-git push
+git push origin main
 git tag v0.1.1
 git push origin v0.1.1
 ```
 
-### 3. 等 GitHub Actions
+### 4. 等 GitHub Actions
 
 推送 `v*` tag 后会自动：
 
@@ -41,16 +51,18 @@ git push origin v0.1.1
 
 查看进度：仓库 → Actions
 
-### 4. 首次配置（只需一次）
+### 5. 首次配置（只需一次）
 
 仓库 Secrets（Settings → Secrets and variables → Actions）：
 
 | Secret | 说明 |
 |--------|------|
+| `CORE_SOURCE_KEY` | `.keys/core-source.key` 的 base64 密钥，用于构建前解密核心源码 |
 | `TAURI_SIGNING_PRIVATE_KEY` | `.keys/aiswitch.key` 文件全文 |
 | `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` | 私钥密码（当前为空可省略） |
 
-> 私钥只保存在本地 `.keys/`，不要提交到 Git。  
+> 加密密钥和签名私钥只保存在本地 `.keys/` 与 GitHub Actions Secrets，不要提交到 Git。  
+> 请将 `.keys/core-source.key` 另行备份到可靠的密码管理器；丢失后无法解密已上传的核心源码。  
 > 丢失私钥后旧客户端无法校验新签名，需要换公钥并让用户重装。
 
 ---

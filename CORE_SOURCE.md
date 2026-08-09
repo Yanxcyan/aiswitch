@@ -10,15 +10,15 @@ Keep the existing `.keys/core-source.key` backed up in a secure password
 manager. On a new trusted machine, restore that file and then run:
 
 ```powershell
-pnpm core:decrypt
+pnpm.cmd core:decrypt
 ```
 
 After changing any protected source file, refresh and verify the encrypted
 copies before committing:
 
 ```powershell
-pnpm core:encrypt
-pnpm core:verify
+pnpm.cmd core:encrypt
+pnpm.cmd core:verify
 ```
 
 Never commit `.keys/core-source.key`, paste its value into logs, or send it in
