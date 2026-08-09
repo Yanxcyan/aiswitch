@@ -1,0 +1,63 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+src-tauri/target/
+src-tauri/gen/
+coverage/
+
+# Core source is encrypted before it is tracked
+/src/app.js
+/src-tauri/src/*.rs
+
+# Logs
+*.log
+app.log
+vite.log
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Env / secrets — never commit private signing keys
+.env
+.env.*
+.keys/
+*.key
+!*.key.pub
+*.pem
+*.pfx
+*.p12
+*.keystore
+
+# Local application data and backups
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.aiswitch.bak
+*.tmp
+
+# Packaged artifacts belong in GitHub Releases
+*.exe
+*.msi
+*.msix
+*.appx
+*.dmg
+*.AppImage
+*.deb
+*.rpm
+*.sig
+
+# Internal reports and independently published release catalogs
+/AUDIT_REPORT.md
+/releases.json
+
+# Local tooling
+.pnpm-store/
+.cargo-cache/

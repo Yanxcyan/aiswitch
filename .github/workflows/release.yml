@@ -1,0 +1,68 @@
+name: Release
+
+# Push a version tag to publish, e.g.:
+#   git tag v0.1.1 && git push origin v0.1.1
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Decrypt protected core source
+        shell: pwsh
+        env:
+          CORE_SOURCE_KEY: ${{ secrets.CORE_SOURCE_KEY }}
+        run: node scripts/core-crypto.mjs decrypt
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri -> target
+
+      - name: Install frontend dependencies
+        run: pnpm install
+
+      - name: Build and publish GitHub Release
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: AiSwitch ${{ github.ref_name }}
+          releaseBody: |
+            ## AiSwitch 安装包
+
+            1. 下载 `AiSwitch_*_x64-setup.exe`
+            2. 运行安装（可直接覆盖旧版本）
+            3. 已安装用户也可在应用内 **设置 → 检查新版本** 自动更新
+
+            ---
+            自动发布自 GitHub Actions。
+          releaseDraft: false
+          prerelease: false
+          args: --bundles nsis

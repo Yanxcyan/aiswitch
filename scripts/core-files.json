@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "files": [
+    "src/app.js",
+    "src-tauri/src/app_update.rs",
+    "src-tauri/src/config_adapters.rs",
+    "src-tauri/src/db.rs",
+    "src-tauri/src/download_manager.rs",
+    "src-tauri/src/lib.rs",
+    "src-tauri/src/main.rs",
+    "src-tauri/src/model_catalog.rs",
+    "src-tauri/src/models.rs",
+    "src-tauri/src/provider_service.rs",
+    "src-tauri/src/release_catalog.rs",
+    "src-tauri/src/url_security.rs"
+  ]
+}

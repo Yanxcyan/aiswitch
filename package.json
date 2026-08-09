@@ -1,0 +1,21 @@
+{
+  "name": "aiswitch",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 1420",
+    "build": "vite build",
+    "core:key": "node scripts/core-crypto.mjs init",
+    "core:encrypt": "node scripts/core-crypto.mjs encrypt",
+    "core:decrypt": "node scripts/core-crypto.mjs decrypt",
+    "core:verify": "node scripts/core-crypto.mjs verify",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.8.0",
+    "vite": "^7.3.0"
+  }
+}

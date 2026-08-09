@@ -1,0 +1,58 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "AiSwitch",
+  "version": "0.1.0",
+  "identifier": "com.aiswitch.desktop",
+  "build": {
+    "beforeDevCommand": "pnpm.cmd dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "pnpm.cmd build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "AiSwitch",
+        "width": 920,
+        "height": 640,
+        "minWidth": 720,
+        "minHeight": 500,
+        "center": true,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src ipc: http://ipc.localhost https://github.com https://*.github.com https://objects.githubusercontent.com https://release-assets.githubusercontent.com; img-src 'self' asset: http://asset.localhost data: blob: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none'; base-uri 'none'; frame-src 'none'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "nsis",
+    "createUpdaterArtifacts": true,
+    "icon": [
+      "icons/16x16.png",
+      "icons/24x24.png",
+      "icons/32x32.png",
+      "icons/48x48.png",
+      "icons/64x64.png",
+      "icons/128x128.png",
+      "icons/128x128-2x.png",
+      "icons/256x256.png",
+      "icons/icon.ico"
+    ]
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDJENURDOUM2OEYxMzQxRTMKUldUalFST1B4c2xkTGRzaWtnMzZQY29Qa0RNUXNvbllTaEd1YnovNXlzUkNLTFg0azdqWWZMYjkK",
+      "endpoints": [
+        "https://github.com/Yanxcyan/aiswitch/releases/latest/download/latest.json"
+      ],
+      "windows": {
+        "installMode": "passive"
+      }
+    }
+  }
+}
